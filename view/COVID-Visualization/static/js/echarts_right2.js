@@ -6,7 +6,14 @@ var echarts_right2_option = {
     dataset: [
     {
       dimensions: ['hot_point','num'],
-      source: []
+      source: [['Hannah Krause', 314],
+        ['Zhao Qian', 351],
+        ['Jasmin Krause ', 287],
+        ['Li Lei', 219],
+        ['Karle Neumann', 253],
+        ['Mia Neumann', 165],
+        ['Böhm Fuchs', 318],
+        ['Han Meimei', 366]
     },
     {
       transform: {

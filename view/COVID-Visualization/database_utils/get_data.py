@@ -3,7 +3,13 @@ import psycopg2
 # 返回各省数据
 
 def get_c2_data():
-    return 0
+    conn = psycopg2.connect(database='weiboComments', user="postgres", password="lrj2000118", host="localhost",
+                            port="5432")
+    cur = conn.cursor()
+    cur.execute("select comment_user_location ,count(comment_user_content) AS nums from comments group by comment_user_location;")
+    results = cur.fetchall()
+    results.sort(key=lambda x: x[1], reverse=True)
+    return results
 
 # 返回某地区的发言
 def get_r1_data(resou,addr):
