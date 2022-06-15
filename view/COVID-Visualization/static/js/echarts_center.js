@@ -1,13 +1,5 @@
 var echarts_center = echarts.init(document.getElementById('c2'), "dark");
 
-var mydata = [{
-    'name': '上海',
-    'value': 318
-}, {
-    'name': '云南',
-    'value': 162
-}]
-
 var echarts_center_option = {
     title: {
         text: '全国评论分布',
@@ -28,18 +20,18 @@ var echarts_center_option = {
         },
         splitList: [{
             start: 0,
-            end: 99
+            end: 15
         }, {
-            start: 100,
-            end: 999
+            start: 16,
+            end: 40
         }, {
-            start: 1000,
-            end: 3999
+            start: 41,
+            end: 80
         }, {
-            start: 4000,
-            end: 9999
+            start: 81,
+            end: 150
         }, {
-            start: 10000
+            start: 151
         }],
         color: ['#8A3310', '#C64918', '#E55B25', '#F2AD92', '#F9DCD1']
     },

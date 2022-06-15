@@ -3,7 +3,7 @@ import psycopg2
 # 返回各省数据
 
 def get_c2_data():
-    conn = psycopg2.connect(database='weiboComments', user="postgres", password="lrj2000118", host="localhost",
+    conn = psycopg2.connect(database='weiboComments', user="postgres", password="247rgzrc", host="localhost",
                             port="5432")
     cur = conn.cursor()
     cur.execute("select comment_user_location ,count(comment_user_content) AS nums from comments group by comment_user_location;")
