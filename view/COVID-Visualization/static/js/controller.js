@@ -9,22 +9,6 @@ function get_c2_data() {
     });
 }
 
-function get_l1_data() {
-    echarts_left1.showLoading()
-    $.ajax({
-        url: "/l1",
-        success: function (data) {
-            echarts_left1_Option.xAxis[0].data = data.day
-            echarts_left1_Option.series[0].data = data.confirm
-            echarts_left1_Option.series[1].data = data.suspect
-            echarts_left1_Option.series[2].data = data.heal
-            echarts_left1_Option.series[3].data = data.dead
-            echarts_left1.setOption(echarts_left1_Option)
-            echarts_left1.hideLoading()
-        },
-        error: console.error('请求l1数据失败')
-    });
-}
 
 function get_r1_data() {
     $.ajax({
@@ -41,10 +25,11 @@ function get_r1_data() {
 function get_r2_data() {
     $.ajax({
         url: "/r2",
-        success: function (data) {
-            echarts_right2_option.series[0].data = data.kws;
+        success: function (res) {
+            echarts_right2_option.dataset.data = res.data;
             echarts_right2.setOption(echarts_right2_option);
-        }
+        },
+        error: console.error('请求r1数据失败')
     })
 }
 

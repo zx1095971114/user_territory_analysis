@@ -22,14 +22,17 @@ def c2_handle():
 @app.route("/r1")
 def r1_handle():
     data = get_data.get_r1_data()#需要两个参数(热搜名，地址）
-    return 0
+    return data
 
 
 @app.route('/r2')
 def r2_handle():
-    data = get_data.get_r2_data()#需要一个参数(社交平台)
-    return 0
-
+    res = get_data.get_r2_data()#需要一个参数(社交平台)
+    data = []
+    for i in res:
+        data.append([i[0],i[1]])
+    print(data)
+    return jsonify({"data":data})
 
 if __name__ == "__main__":
     # 网页缓存会阻碍debug => 使用随机端口
