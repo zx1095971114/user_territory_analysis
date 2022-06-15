@@ -48,7 +48,7 @@ class WeibospiderSpider(scrapy.Spider):
             print(next_url)
             print(item)
             print("*****************")
-            cookies = "login_sid_t=fb88840a5c2ebad61a5998b3da291385; cross_origin_proto=SSL; _s_tentry=passport.weibo.com; Apache=3201104882332.868.1654741926705; SINAGLOBAL=3201104882332.868.1654741926705; ULV=1654741926709:1:1:1:3201104882332.868.1654741926705:; WBtopGlobal_register_version=2022060910; SUBP=0033WrSXqPxfM725Ws9jqgMF55529P9D9Wh.6O3O_fW98sYRYf2fwTI35NHD95QfSKqcSKeNShqEWs4DqcjDi--ciKLhi-2Ri--NiKn0i-82i--Ri-isi-8Wi--4iKnNiKyheh5N1K.t; SSOLoginState=1654747716; SUB=_2A25PpQIUDeThGeNL7VQU8ynIzT6IHXVtaa5crDV8PUJbkNB-LVb-kW1NSNJowHemz3SFfRdogVei7q2wbzVUbVWl" #获取一个cookie
+            cookies = "SINAGLOBAL=6784545665528.649.1571721681527; UOR=vjudge.net,widget.weibo.com,link.csdn.net; SUBP=0033WrSXqPxfM725Ws9jqgMF55529P9D9W5osk1.VPJMDjaVq7UVxiG05JpX5KMhUgL.FoMNeo-ceozceK52dJLoIE5LxKnL1h5L1h2LxKBLB.2LB.2LxK-LB--LBoqESKMX1Btt; PC_TOKEN=46426569f4; ALF=1686809627; SSOLoginState=1655273624; SCF=ArSGTb0j93G0uSM-CVcRmMD4oP_VbHBireq6TW4xqXWkdXlMHoeUMRtpqq8KDILlP3VqQc6uw8AvnWd_FxOiVzw.; SUB=_2A25PrQjJDeThGeFJ6VcX8izKyjyIHXVs230BrDV8PUNbmtAKLWjQkW9NfEsqlSIAdi3aR7O5oLvTpIk3e9t6FW-1; XSRF-TOKEN=FCFsoBeeUBbipkXSk7YMiXe_; _s_tentry=weibo.com; Apache=59500830942.00975.1655273634869; ULV=1655273635110:16:4:3:59500830942.00975.1655273634869:1655116166465; WBPSESS=tJxU3q4tkeliMDc95x9m1E5lIKsSMNdIZMht-1Z-Vc6EgWT1BrakJlMi9q1_NtztVZntXf-ez0N0g-aCKo5COfkmScTEh4YxXXGb6IemPRz2u8SqlZjqz1lL2mYoN_OR-aAwvqSR3NdnLhG090rwMQ==" #获取一个cookie
             cookies = {i.split("=")[0]: i.split("=")[1] for i in cookies.split("; ")}
             yield scrapy.Request(url=next_url,callback=self.parse_detail,meta={'data':item},cookies=cookies)     
         print(len(uls))
@@ -60,14 +60,14 @@ class WeibospiderSpider(scrapy.Spider):
 
         cookies = "login_sid_t=fb88840a5c2ebad61a5998b3da291385; cross_origin_proto=SSL; _s_tentry=passport.weibo.com; Apache=3201104882332.868.1654741926705; SINAGLOBAL=3201104882332.868.1654741926705; ULV=1654741926709:1:1:1:3201104882332.868.1654741926705:; WBtopGlobal_register_version=2022060910; SUBP=0033WrSXqPxfM725Ws9jqgMF55529P9D9Wh.6O3O_fW98sYRYf2fwTI35NHD95QfSKqcSKeNShqEWs4DqcjDi--ciKLhi-2Ri--NiKn0i-82i--Ri-isi-8Wi--4iKnNiKyheh5N1K.t; SSOLoginState=1654747716; SUB=_2A25PpQIUDeThGeNL7VQU8ynIzT6IHXVtaa5crDV8PUJbkNB-LVb-kW1NSNJowHemz3SFfRdogVei7q2wbzVUbVWl" #获取一个cookie
         cookies = {i.split("=")[0]: i.split("=")[1] for i in cookies.split("; ")}
-        # print("进入热搜详情页面：("+item['name']+")")         查看运行细节请取消注释此行
+        print("进入热搜详情页面：("+item['name']+")")         #查看运行细节请取消注释此行
 
         username = response.xpath('.//*[@class="name"]/text()').extract_first()
         detail = response.xpath('.//*[@class="from"]/a[1]/@href').extract_first()
         weibo_id = response.xpath('.//*[@action-type="feed_list_item"]/@mid').extract_first()
-        # print("weibo ID:\t" + weibo_id)           查看运行细节请取消注释此行
-        # print("detail url:\t" + detail)           查看运行细节请取消注释此行
-        # print("username\t" + username)            查看运行细节请取消注释此行
+        print("weibo ID:\t" + weibo_id)           #查看运行细节请取消注释此行
+        print("detail url:\t" + detail)           #查看运行细节请取消注释此行
+        print("username\t" + username)            #查看运行细节请取消注释此行
 
         
         headers = {
@@ -110,7 +110,7 @@ class WeibospiderSpider(scrapy.Spider):
                 comment_item['comment_user_location'] = userCity
                 comment_item['comment_user_content'] = content
                 
-                # print(comment_item)                                           查看运行细节请取消注释此行
+                print(comment_item)                                           #查看运行细节请取消注释此行
                 count+=1
                 yield comment_item
             params["max_id"] = max_id

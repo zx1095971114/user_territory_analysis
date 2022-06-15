@@ -1,0 +1,101 @@
+body {
+    margin: 0;
+    background: #333;
+}
+
+#title {
+    position: absolute;
+    width: 40%;
+    height: 10%;
+
+    display: flex;
+    align-items: center;
+    top: 0;
+    left: 30%;
+    /* background: #666666; */
+    color: white;
+    font-size: 40px;
+    justify-content: center;
+}
+
+#c2 {
+    position: absolute;
+    width: 60%;
+    height: 75%;
+    top: 15%;
+    left: 5%;
+    background: #888888;
+}
+
+.high_risk {
+    color: red;
+}
+
+.middle_risk {
+    color: yellow;
+}
+
+#risk_wrapper {
+    margin-top: 2.5%;
+    overflow: hidden;
+    height: 80%;
+    text-align: center;
+}
+
+#r1 {
+    position: absolute;
+    width: 30%;
+    height: 20%;
+    top: 10%;
+    right: 0%;
+    background: #666666;
+}
+
+#r2 {
+    position: absolute;
+    width: 30%;
+    height: 90%;
+    top: 30%;
+    right: 0%;
+    background: #777;
+}
+
+/*
+此处是设置自动匹配横屏，以适应手机显示 容器使用下面定义的 id: gyroContain
+*/
+@media screen and (orientation: portrait) {
+    html {
+        width: 100vmin;
+        height: 100vmax;
+        /*高度比宽度大*/
+    }
+
+    body {
+        width: 100vmin;
+        height: 100vmax;
+    }
+
+    #gyroContain {
+        width: 100vmax;
+        height: 100vmin;
+        transform-origin: top left;
+        transform: rotate(90deg) translate(0, -100vmin);
+    }
+}
+
+@media screen and (orientation: landscape) {
+    html {
+        width: 100vmax;
+        height: 100vmin;
+    }
+
+    body {
+        width: 100vmax;
+        height: 100vmin;
+    }
+
+    #gyroContain {
+        width: 100vmax;
+        height: 100vmin;
+    }
+}

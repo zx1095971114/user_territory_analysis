@@ -13,7 +13,7 @@ class WeiboProjectPipeline:
     def open_spider(self,spider):
         hostname = 'localhost'
         username = 'postgres'
-        password = 'mrdl7824'
+        password = 'lrj2000118'
         database = 'weiboComments'
         self.connection = psycopg2.connect(host=hostname,user=username,password=password,dbname=database,port="5432")
         self.cur = self.connection.cursor()
