@@ -1,0 +1,42 @@
+.dot {
+  fill:goldenrod;
+  fill-opacity: 0.5;
+  transition-duration: 0.2s;
+}
+
+.dot:hover {
+  fill:orange;
+  fill-opacity: 1;
+}
+
+
+.dot.rect_selected {
+  stroke: #333;
+  stroke-width: 1;
+  stroke-opacity: 1;
+}
+
+.dot.highdot {
+  fill-opacity: 1;
+  fill: red;
+}
+.paper_title {
+  font-weight: bold;
+}
+.paper_authors {
+  font-size: small;
+}
+.one_paper {
+  background: white;
+  padding: 5px;
+  margin: 5px 0;
+  border-radius: 5px;
+  cursor: pointer;
+}
+.one_paper:hover {
+  background: lightgray;
+}
+
+.pv_title {
+  font-weight: bold;
+}

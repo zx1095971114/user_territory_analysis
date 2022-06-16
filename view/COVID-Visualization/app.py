@@ -2,11 +2,15 @@ from flask import request
 from flask import Flask, render_template, jsonify
 from flask import url_for
 from flask import redirect
+from deal.out import bprint as out
 from config import *
 import database_utils.get_data as get_data
 
 app = Flask(__name__)
 
+deals = [out]
+for deal in deals:
+    app.register_blueprint(deal)
 
 @app.route('/', methods=['GET','POST'])
 def handle():
@@ -43,6 +47,10 @@ def r2_handle():
         data.append([i[0],i[1]])
     print(data)
     return jsonify({"data":data})
+
+@app.route('/paper')
+def paperhtml():
+    return render_template('papers_vis.html')
 
 if __name__ == "__main__":
     # 网页缓存会阻碍debug => 使用随机端口
