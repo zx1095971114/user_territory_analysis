@@ -48,7 +48,7 @@ class WeibospiderSpider(scrapy.Spider):
             print(next_url)
             print(item)
             print("*****************")
-            cookies = "SINAGLOBAL=6784545665528.649.1571721681527; UOR=vjudge.net,widget.weibo.com,link.csdn.net; SUBP=0033WrSXqPxfM725Ws9jqgMF55529P9D9W5osk1.VPJMDjaVq7UVxiG05JpX5KMhUgL.FoMNeo-ceozceK52dJLoIE5LxKnL1h5L1h2LxKBLB.2LB.2LxK-LB--LBoqESKMX1Btt; PC_TOKEN=46426569f4; ALF=1686809627; SSOLoginState=1655273624; SCF=ArSGTb0j93G0uSM-CVcRmMD4oP_VbHBireq6TW4xqXWkdXlMHoeUMRtpqq8KDILlP3VqQc6uw8AvnWd_FxOiVzw.; SUB=_2A25PrQjJDeThGeFJ6VcX8izKyjyIHXVs230BrDV8PUNbmtAKLWjQkW9NfEsqlSIAdi3aR7O5oLvTpIk3e9t6FW-1; XSRF-TOKEN=FCFsoBeeUBbipkXSk7YMiXe_; _s_tentry=weibo.com; Apache=59500830942.00975.1655273634869; ULV=1655273635110:16:4:3:59500830942.00975.1655273634869:1655116166465; WBPSESS=tJxU3q4tkeliMDc95x9m1E5lIKsSMNdIZMht-1Z-Vc6EgWT1BrakJlMi9q1_NtztVZntXf-ez0N0g-aCKo5COfkmScTEh4YxXXGb6IemPRz2u8SqlZjqz1lL2mYoN_OR-aAwvqSR3NdnLhG090rwMQ==" #获取一个cookie
+            cookies = "SINAGLOBAL=6784545665528.649.1571721681527; UOR=vjudge.net,widget.weibo.com,link.csdn.net; SUBP=0033WrSXqPxfM725Ws9jqgMF55529P9D9W5osk1.VPJMDjaVq7UVxiG05JpX5KMhUgL.FoMNeo-ceozceK52dJLoIE5LxKnL1h5L1h2LxKBLB.2LB.2LxK-LB--LBoqESKMX1Btt; PC_TOKEN=d650a8bc91; ALF=1686894076; SSOLoginState=1655358077; SCF=ArSGTb0j93G0uSM-CVcRmMD4oP_VbHBireq6TW4xqXWk02qvI0GTMTktF-YcrBzEtvUhKFqoLw2K8BC5Q-mdC5o.; SUB=_2A25PrrItDeThGeFJ6VcX8izKyjyIHXVs3aTlrDV8PUNbmtB-LUHNkW9NfEsqlWw8OLVUWzXjvQcoLDlluv74_jO3; XSRF-TOKEN=fZvVPXMucuzfEYcwv84pX_4q; _s_tentry=weibo.com; Apache=2253474577906.329.1655358330794; ULV=1655358330907:17:5:4:2253474577906.329.1655358330794:1655273635110; WBPSESS=tJxU3q4tkeliMDc95x9m1E5lIKsSMNdIZMht-1Z-Vc6EgWT1BrakJlMi9q1_NtztVZntXf-ez0N0g-aCKo5COcfY3ln4GszISQRk3phbcOAQ_Y2Gc29Fz65VY7KgZPywvF4obPiRvmHg1GjGbXRi_g==" #获取一个cookie
             cookies = {i.split("=")[0]: i.split("=")[1] for i in cookies.split("; ")}
             yield scrapy.Request(url=next_url,callback=self.parse_detail,meta={'data':item},cookies=cookies)     
         print(len(uls))
@@ -65,9 +65,9 @@ class WeibospiderSpider(scrapy.Spider):
         username = response.xpath('.//*[@class="name"]/text()').extract_first()
         detail = response.xpath('.//*[@class="from"]/a[1]/@href').extract_first()
         weibo_id = response.xpath('.//*[@action-type="feed_list_item"]/@mid').extract_first()
-        print("weibo ID:\t" + weibo_id)           #查看运行细节请取消注释此行
-        print("detail url:\t" + detail)           #查看运行细节请取消注释此行
-        print("username\t" + username)            #查看运行细节请取消注释此行
+        #print("weibo ID:\t" + weibo_id)           #查看运行细节请取消注释此行
+        #print("detail url:\t" + detail)           #查看运行细节请取消注释此行
+        #print("username\t" + username)            #查看运行细节请取消注释此行
 
         
         headers = {
@@ -107,7 +107,7 @@ class WeibospiderSpider(scrapy.Spider):
                 content = BeautifulSoup(item1["text"], "html.parser").text
                 comment_item['comment_user_name'] = userName
                 comment_item['comment_user_id'] = userID
-                comment_item['comment_user_location'] = userCity
+                comment_item['comment_user_location'] = userCity.split(" ")[0]
                 comment_item['comment_user_content'] = content
                 
                 print(comment_item)                                           #查看运行细节请取消注释此行

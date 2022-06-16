@@ -1,23 +1,33 @@
+from flask import request
 from flask import Flask, render_template, jsonify
-
+from flask import url_for
+from flask import redirect
 from config import *
 import database_utils.get_data as get_data
 
 app = Flask(__name__)
 
 
-@app.route('/')
+@app.route('/', methods=['GET','POST'])
 def handle():
-    return render_template('main.html')
+    if request.method == "GET":
+        return render_template('main.html')
+    if request.method =="POST":
+        addr = request.form.get("saddr")
+        data = get_data.get_comments(addr)
+        return render_template('search.html', data=data)
 
-
-@app.route("/c2")
+@app.route("/c2",methods=['GET'])
 def c2_handle():
-    res = []
-    for tup in get_data.get_c2_data():#需要一个参数（热搜名）
-        res.append({"name": tup[0], "value": int(tup[1])})
-    return jsonify({'data': res})
-
+    if request.method=="GET":
+        hot_point = request.args.get("params")
+        data = get_data.get_c2_data(hot_point)
+        res = []
+        for tup in data:
+            res.append({"name": tup[0], "value": int(tup[1])})
+        return jsonify({'data': res})
+    else:
+        return "error"
 
 @app.route("/r1")
 def r1_handle():

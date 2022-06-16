@@ -4,7 +4,7 @@ var echarts_right2 = echarts.init(document.getElementById('r2'), "dark");
 var echarts_right2_option = {
     // backgroundColor: '#515151',
   title: {
-      text: '微博热评',
+      text: '微博热榜',
       subtext: '',
       right:200,
       top:10
@@ -31,3 +31,7 @@ var echarts_right2_option = {
 }
 
 echarts_right2.setOption(echarts_right2_option);
+echarts_right2.on('click', function(params) {
+    console.log(params.data[0])
+    get_c2_data(params.data[0])
+});
