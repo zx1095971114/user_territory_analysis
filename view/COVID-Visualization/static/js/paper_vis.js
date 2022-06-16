@@ -1,4 +1,3 @@
-
 let papersInfo = [];
 let locs = [];
 let tippys = null;

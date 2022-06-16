@@ -18,8 +18,11 @@ def handle():
         return render_template('main.html')
     if request.method =="POST":
         addr = request.form.get("saddr")
-        data = get_data.get_comments(addr)
-        return render_template('search.html', data=data)
+        if addr!=None:
+            data = get_data.get_comments(addr)
+            return render_template('search.html', data=data)
+        else:
+            return redirect(url_for('paperhtml'))
 
 @app.route("/c2",methods=['GET'])
 def c2_handle():

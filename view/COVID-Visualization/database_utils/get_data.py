@@ -1,9 +1,9 @@
 #本文件用于实现数据库连接，并搜索数据
 import psycopg2
 # 返回各省数据
-
+password = "lrj2000118"
 def get_c2_data(hot_point):
-    conn = psycopg2.connect(database='weiboComments', user="postgres", password="247rgzrc", host="localhost",
+    conn = psycopg2.connect(database='weiboComments', user="postgres", password=password, host="localhost",
                             port="5432")
     cur = conn.cursor()
     if(hot_point=="all"):
@@ -19,7 +19,7 @@ def get_c2_data(hot_point):
         return results
 # 返回某地区的发言
 def get_comments(addr):
-    conn = psycopg2.connect(database='weiboComments', user="postgres", password="247rgzrc", host="localhost",
+    conn = psycopg2.connect(database='weiboComments', user="postgres", password=password, host="localhost",
                             port="5432")
     cur = conn.cursor()
     cur.execute(
@@ -29,7 +29,7 @@ def get_comments(addr):
 
 # 返回10条热搜
 def get_r2_data():
-    conn = psycopg2.connect(database='weiboComments', user="postgres", password="247rgzrc", host="localhost",
+    conn = psycopg2.connect(database='weiboComments', user="postgres", password=password, host="localhost",
                             port="5432")
     cur = conn.cursor()
     cur.execute("select hot_point_name ,count(distinct comment_user_content) AS nums from comments group by hot_point_name;")
