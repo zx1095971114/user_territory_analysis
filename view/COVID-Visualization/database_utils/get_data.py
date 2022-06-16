@@ -1,7 +1,7 @@
 #本文件用于实现数据库连接，并搜索数据
 import psycopg2
 # 返回各省数据
-password = "lrj2000118"
+password = "247rgzrc"
 def get_c2_data(hot_point):
     conn = psycopg2.connect(database='weiboComments', user="postgres", password=password, host="localhost",
                             port="5432")

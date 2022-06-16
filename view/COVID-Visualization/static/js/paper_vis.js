@@ -11,7 +11,7 @@ const slct_papers_info = d3.select("#slct_papers_info");
 
 const drawSize = () => {
   const co = document.getElementById("container");
-  const win_height = Math.max(window.innerHeight - 280, 300);
+  const win_height = Math.max(window.innerHeight - 200, 310);
   let win_width = Math.max(co.offsetWidth - 210, 300);
   if (co.offsetWidth < 768) ww = co.offsetWidth - 10.0;
   if (win_height / win_width > 1.3) {
@@ -71,22 +71,22 @@ function brush_ended(slct) {
   for(aaa; aaa <= newPapersInfo.length; aaa++){
     bottom1.append("text")
     .attr("x", 40)
-    .attr("y", 590 + aaa * 50)
-    .attr("font-size", 20)
+    .attr("y", 590 + aaa * 54)
+    .attr("font-size", 19)
     .text(newPapersInfo[aaa].title)
 
 
     bottom.append("text")
     .attr("x", 40)
-    .attr("y", 618 + aaa * 50)
-    .attr("font-size", 15)
-    .text(newPapersInfo[aaa].authors)
+    .attr("y", 617 + aaa * 54)
+    .attr("font-size", 17)
+    .text("用户:" + newPapersInfo[aaa].authors + "……………………属地:" + newPapersInfo[aaa].location + "……………………热搜:" + newPapersInfo[aaa].hotPoint)
 
     bottom.append("rect")
     .attr("x", 40)
-    .attr("y", 570 + aaa * 50)
-    .attr("width", 1000)
-    .attr("height", 48)
+    .attr("y", 570 + aaa * 54)
+    .attr("width", 1300)
+    .attr("height", 50)
     .attr("fill", "black")
     .attr("opacity", 0.1)
   }
@@ -126,7 +126,7 @@ function brush_ended(slct) {
 const draw_update = () => {{
       const [d_width, d_height] = drawSize();
 
-      scatters.attr("width", d_width+ 400).attr("height", d_height + 400);
+      scatters.attr("width", d_width+ 400).attr("height", d_height + 770);
       d3.select("#info_items").style("height", `${d_height}px`);
 
       xl.range([sizes.margins.l, d_width - sizes.margins.r]);

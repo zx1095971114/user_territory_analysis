@@ -1,48 +1,55 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-        <meta charset="utf-8"/>
+  <title>实训项目展示</title>
+  <meta charset="utf-8" />
 
-        <script src="https://cdn.jsdelivr.net/npm/d3@6/dist/d3.min.js"></script>
-        <script src="https://cdn.jsdelivr.net/npm/jquery@3.4.1/dist/jquery.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
-        <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.4.0/dist/umd/popper.min.js"></script>
-        <script src="https://cdn.jsdelivr.net/npm/tippy.js@6.2.3/dist/tippy-bundle.umd.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/d3@6/dist/d3.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/jquery@3.4.1/dist/jquery.min.js"
+    integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.4.0/dist/umd/popper.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/tippy.js@6.2.3/dist/tippy-bundle.umd.min.js"></script>
 
-       
-        <link rel="stylesheet" href="/static/css/paper_vis.css" />
 
-        <script src="https://cdn.jsdelivr.net/gh/tgdwyer/WebCola/WebCola/cola.min.js"></script>
+  <link rel="stylesheet" href="/static/css/paper_vis.css" />
+
+  <script src="https://cdn.jsdelivr.net/gh/tgdwyer/WebCola/WebCola/cola.min.js"></script>
 </head>
 
 <body>
-<div class="container-lg" id="container" style="padding-top: 20px;">
- 
-</div>
+  <div id="heading">
+    <h1 class="title">评论向量可视化</h1>
+  </div>
+  <div class="container-lg" id="container" style="padding-top: 20px;">
 
- <div class="p_row" style="text-align: center;">
-   <div class="card" style="margin-right: -40px;">
-     <div class="card-header">
-       <div id="p_draw" style="display: inline-block; vertical-align: top;">
-         <svg class="scatters" style="display: block;"></svg>
-       </div>
-         <div style="display: block; overflow-y: auto;" id="info_items">
+  </div>
+
+  <div class="p_row" style="text-align: center;">
+    <div class="card" style="margin-right: -40px;">
+      <div class="card-header">
+        <div id="p_draw" style="display: inline-block; vertical-align: top;">
+          <svg class="scatters" style="display: block;"></svg>
+        </div>
+        <!-- <div style="display: block; overflow-y: auto;" id="info_items">
            <div style="overflow-y: auto; bottom: 0; margin-top: 5pt;">
              <div id="slct_papers_info"></div>
            </div>
-         </div>
-     </div>
-   </div>
- </div>
-</div>
-<script src="/static/js/paper_vis.js"></script>
+         </div> -->
+      </div>
+    </div>
+  </div>
+  </div>
+  <script src="/static/js/paper_vis.js"></script>
 
-<script>
- $(document).ready(function () {
-   start();
-   tippy("[data-tippy-content]", { trigger: "mouseenter focus" });
- });
-</script>
+  <script>
+    $(document).ready(function () {
+      start();
+      tippy("[data-tippy-content]", { trigger: "mouseenter focus" });
+    });
+  </script>
 
 
 </body>
+
 </html>
