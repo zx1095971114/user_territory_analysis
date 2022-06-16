@@ -28,7 +28,7 @@ def r1_handle():
 @app.route('/r2')
 def r2_handle():
     res = get_data.get_r2_data()#需要一个参数(社交平台)
-    data = []
+    data = [['hotPoint', 'num']]
     for i in res:
         data.append([i[0],i[1]])
     print(data)

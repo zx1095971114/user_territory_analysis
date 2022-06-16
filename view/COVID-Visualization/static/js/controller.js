@@ -26,7 +26,7 @@ function get_r2_data() {
     $.ajax({
         url: "/r2",
         success: function (res) {
-            echarts_right2_option.dataset.data = res.data;
+            echarts_right2_option.dataset.source = res.data;
             echarts_right2.setOption(echarts_right2_option);
         },
         error: console.error('请求r1数据失败')

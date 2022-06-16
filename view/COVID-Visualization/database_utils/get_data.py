@@ -22,5 +22,5 @@ def get_r2_data():
     cur = conn.cursor()
     cur.execute("select hot_point_name ,count(comment_user_content) AS nums from comments group by hot_point_name;")
     results = cur.fetchall()
-    results.sort(key=lambda x:x[1],reverse=True)
+    results.sort(key=lambda x:x[1],reverse=False)
     return results
