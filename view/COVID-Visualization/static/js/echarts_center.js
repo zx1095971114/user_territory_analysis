@@ -6,7 +6,6 @@ var echarts_center_option = {
         subtext: '',
         x: 'left'
     },
-
     tooltip: {
         trigger: 'item'
     },
