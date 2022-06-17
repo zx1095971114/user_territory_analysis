@@ -3,12 +3,13 @@ from flask import Flask, render_template, jsonify
 from flask import url_for
 from flask import redirect
 from deal.out import bprint as out
+from deal.data import bprint_data
 from config import *
 import database_utils.get_data as get_data
 
 app = Flask(__name__)
 
-deals = [out]
+deals = [out,bprint_data]
 for deal in deals:
     app.register_blueprint(deal)
 
@@ -18,7 +19,9 @@ def handle():
         return render_template('main.html')
     if request.method =="POST":
         addr = request.form.get("saddr")
-        if addr!=None:
+        if addr == "词云图":
+            return redirect(url_for('picturehtml'))
+        elif addr!=None:
             data = get_data.get_comments(addr)
             return render_template('search.html', data=data)
         else:
@@ -54,6 +57,10 @@ def r2_handle():
 @app.route('/paper')
 def paperhtml():
     return render_template('papers_vis.html')
+
+@app.route('/picture')
+def picturehtml():
+    return render_template('picture.html')
 
 if __name__ == "__main__":
     # 网页缓存会阻碍debug => 使用随机端口
