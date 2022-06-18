@@ -35,8 +35,7 @@ const XScale = d3.scaleLinear().domain([-200, 200]).range([0, 1000])
 const YScale = d3.scaleLinear().domain([-200, 200]).range([0, 600])
 
 const brush_start = (slct) => {
-  //tippys.forEach((tip) => tip.disable());
-  //console.log(slct)
+
         bottom.selectAll('rect').remove()
         bottom.selectAll('text').remove()
         bottom1.selectAll('text').remove()
@@ -44,15 +43,12 @@ const brush_start = (slct) => {
 };
 
 const brushed = (slct) => {
-  //确定矩形范围并每次选择一个新的矩形范围，矩形可调整位置并调整范围大小
   console.log("brushed")
 
 };
 
 function brush_ended(slct) {
 
-  //tippys.forEach((tip) => tip.enable());
-  //显示矩形围住的论文信息列表，且完成悬浮在每条信息上有提示框的功能（提示框中信息包含文章题目和作者）
   const slct_dots = [];
   const extentF = slct.selection[0];
   const extentL = slct.selection[1];
@@ -90,37 +86,7 @@ function brush_ended(slct) {
     .attr("fill", "black")
     .attr("opacity", 0.1)
   }
-//      bottom.selectAll("rect")
-//      .data(newPapersInfo.filter(function(d){
-//        return d.pos != null
-//      }),(d=>i))
-//      .enter().append("rect")
-//      .attr('x', 40)
-//      .attr('y', 570 + i * 50)
-//      .attr("width", 1000)
-//      .attr("height", 48)
-//      .attr("fill", "black")
-//      .attr("opacity", 0.1)
 
-//      .on("mouseover",function(i,d){
-////        d3.selectAll(".dot")
-////        .attr('opacity',0.2)
-//        d3.select(this)
-//        console.log(i)
-//        console.log(d)
-//        console.log(this)
-//    })
-  //在页面下方显示矩形框内的论文信息
-  /*鼠标悬浮于点时 使点高亮 显示悬浮框信息
-    .on("mouseenter", (slct, d) => {
-      
-    })*/
-
-  /*鼠标离开点的时候取消点高亮 隐藏悬浮框信息
-    .on("mouseleave", (slct, d) => {
-
-      
-  });*/
 }
 
 const draw_update = () => {{
@@ -155,7 +121,6 @@ const draw_update = () => {{
         return new cola.Rectangle(x - r2, x + r2, y - r2, y + r2);
       })
       
-      //画出散点，并且完成悬浮在每个点上有提示框的功能（提示框中信息包含文章题目和作者）
 
       scatters.selectAll("circle")
       .data(papersInfo.filter(function(d){
@@ -227,7 +192,6 @@ const tooltip_template = (d) => `
 `;
 
 const start = () => {
-  //读数据文件，并设置文献代表的散点的位置
   Promise.all([
     $.get("origin_papers.json"),
     $.get("proje_papers.json"),

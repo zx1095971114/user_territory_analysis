@@ -64,5 +64,9 @@ def paper_json():
 def save():
     return jsonify(rel_papers["proje_papers"])
 
+# @bprint.route("/picList.json")
+# def words():
+#     return jsonify(rel_papers["picList"])
+
 rel_papers_path = "data"
 extra_files = main(rel_papers_path)

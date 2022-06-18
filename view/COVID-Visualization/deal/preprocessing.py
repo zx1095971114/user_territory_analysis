@@ -15,7 +15,7 @@ comment_user_location = []
 hot_point_name = []
 
 conn=psycopg2.connect(database="weiboComments",user="postgres",password="247rgzrc",host="localhost",port="5432")
-cur=conn.cursor() #创建游标对象
+cur=conn.cursor() 
 cur.execute('SELECT distinct comment_user_content,comment_user_id,comment_user_name,comment_user_location,hot_point_name FROM comments where length(comment_user_content) > 25' )
 results=cur.fetchall()  #获取所有数据
 for row in results:

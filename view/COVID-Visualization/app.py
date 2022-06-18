@@ -2,10 +2,10 @@ from flask import request
 from flask import Flask, render_template, jsonify
 from flask import url_for
 from flask import redirect
-from deal.out import bprint as out
-from deal.data import bprint_data
 from config import *
 import database_utils.get_data as get_data
+from deal.out import bprint as out
+from deal.data import bprint_data
 
 app = Flask(__name__)
 
